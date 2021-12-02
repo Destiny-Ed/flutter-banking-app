@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
     SizeConfig.init(context);
     final size = Layouts.getSize(context);
     return Material(
-      color: Styles.primaryColor,
+      // color: Styles.primaryColor,
       elevation: 0,
       child: ListView(
         physics: const BouncingScrollPhysics(),
@@ -29,14 +29,12 @@ class Home extends StatelessWidget {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Hi Tino',
+                children: const [
+                  Text('Hi Destiny Ed', style: TextStyle(fontSize: 16)),
+                  Gap(3),
+                  Text('Welcome back',
                       style: TextStyle(
-                          color: Colors.white.withOpacity(0.5), fontSize: 16)),
-                  const Gap(3),
-                  const Text('Welcome back',
-                      style: TextStyle(
-                          color: Colors.white,
+                          // color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold))
                 ],
@@ -44,11 +42,11 @@ class Home extends StatelessWidget {
               InkWell(
                 child: Container(
                   padding: const EdgeInsets.all(10),
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.white,
+                    color: Styles.greyColor,
                   ),
-                  child: const Icon(IconlyBold.Notification),
+                  child: const Icon(Icons.notifications),
                 ),
               )
             ],
@@ -62,7 +60,7 @@ class Home extends StatelessWidget {
                 children: [
                   Container(
                     width: size.width * 0.67,
-                    padding: const EdgeInsets.fromLTRB(16, 10, 0, 20),
+                    padding: const EdgeInsets.fromLTRB(16, 10, 0, 10),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.horizontal(
                           left: Radius.circular(15)),
@@ -71,18 +69,23 @@ class Home extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.asset(Assets.cardsVisaYellow,
+                        Image.asset(Assets.cardsMastercard,
                             width: 60, height: 50, fit: BoxFit.cover),
+                        Text('WALLET BALANCE',
+                            style: TextStyle(
+                                color: Colors.white.withOpacity(0.5),
+                                fontSize: 10)),
+                        const Gap(5),
                         const Text('\$20,000.00',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 32,
                                 color: Colors.white)),
-                        const Gap(20),
+                        const Gap(10),
                         Text('CARD NUMBER',
                             style: TextStyle(
                                 color: Colors.white.withOpacity(0.5),
-                                fontSize: 12)),
+                                fontSize: 10)),
                         const Gap(5),
                         const Text('3829 4820 4629 5025',
                             style:
@@ -92,11 +95,11 @@ class Home extends StatelessWidget {
                   ),
                   Container(
                     width: size.width * 0.27,
-                    padding: const EdgeInsets.fromLTRB(20, 10, 0, 20),
+                    padding: const EdgeInsets.fromLTRB(20, 10, 0, 10),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.horizontal(
                           right: Radius.circular(15)),
-                      color: Styles.yellowColor,
+                      color: Styles.greyColor,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,10 +130,10 @@ class Home extends StatelessWidget {
           ),
           const Gap(20),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: Styles.primaryWithOpacityColor,
+              // color: Styles.primaryWithOpacityColor,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,13 +143,14 @@ class Home extends StatelessWidget {
                       ? null
                       : Navigator.push(context,
                           MaterialPageRoute(builder: (c) => item['route'])),
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: item['color'].withOpacity(0.15),
-                    ),
-                    child: Icon(item['icon'], color: item['color']),
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                          backgroundColor: item['color'].withOpacity(0.15),
+                          child: Icon(item['icon'], color: item['color'])),
+                      const Gap(5),
+                      Text(item['title'])
+                    ],
                   ),
                 );
               }).toList(),
@@ -158,17 +162,19 @@ class Home extends StatelessWidget {
             children: [
               const Text('Transactions',
                   style: TextStyle(
-                      color: Colors.white,
+                      // color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold)),
               Row(
-                children: [
-                  Text('Today',
+                children: const [
+                  Text('All',
                       style: TextStyle(
-                          color: Colors.white.withOpacity(0.5), fontSize: 16)),
-                  const Gap(3),
+                          // color: Colors.white.withOpacity(0.5),
+                          fontSize: 16)),
+                  Gap(3),
                   Icon(CupertinoIcons.chevron_down,
-                      color: Colors.white.withOpacity(0.5), size: 17)
+                      // color: Colors.white.withOpacity(0.5),
+                      size: 17)
                 ],
               )
             ],
@@ -209,12 +215,16 @@ class Home extends StatelessWidget {
                         ? Icon(trs['icon'],
                             color: const Color(0xFFFF736C), size: 20)
                         : const SizedBox()),
-                title: Text(trs['name'],
-                    style: const TextStyle(color: Colors.white)),
-                subtitle: Text(trs['date'],
-                    style: TextStyle(color: Colors.white.withOpacity(0.5))),
+                title: Text(
+                  trs['name'],
+                ),
+                subtitle: Text(
+                  trs['date'],
+                ),
                 trailing: Text(trs['amount'],
-                    style: const TextStyle(fontSize: 17, color: Colors.white)),
+                    style: const TextStyle(
+                      fontSize: 17,
+                    )),
               );
             },
           )

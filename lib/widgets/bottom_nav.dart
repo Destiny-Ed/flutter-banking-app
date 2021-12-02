@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_banking_app/pages/home.dart';
-import 'package:flutter_banking_app/pages/profile.dart';
-import 'package:flutter_banking_app/pages/stats.dart';
-import 'package:flutter_banking_app/pages/wallet.dart';
+import 'package:flutter_banking_app/pages/Bottom_nav_pages/home.dart';
+import 'package:flutter_banking_app/pages/Bottom_nav_pages/profile.dart';
+import 'package:flutter_banking_app/pages/Bottom_nav_pages/shop.dart';
+import 'package:flutter_banking_app/pages/Bottom_nav_pages/stats.dart';
+import 'package:flutter_banking_app/pages/Bottom_nav_pages/virtual_card.dart';
 import 'package:flutter_banking_app/utils/iconly/iconly_bold.dart';
 import 'package:flutter_banking_app/utils/styles.dart';
 
@@ -19,8 +20,9 @@ class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const Home(),
-    const Wallet(),
-    const Stats(),
+    const VirtualCardPage(),
+    // const Stats(),
+    const ShopHomePage(),
     const Profile(),
   ];
 
@@ -39,12 +41,13 @@ class _BottomNavState extends State<BottomNav> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         elevation: 0,
-        backgroundColor: Styles.primaryWithOpacityColor,
-        showSelectedLabels: false,
+        // backgroundColor: Styles.primaryWithOpacityColor,
+        showSelectedLabels: true,
         showUnselectedLabels: false,
         selectedLabelStyle: TextStyle(fontSize: 20, color: Styles.primaryColor),
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Styles.blueColor,
+        selectedItemColor: Colors.red,
+        selectedFontSize: 10,
         unselectedItemColor: const Color(0xFF526480),
         items: const [
           BottomNavigationBarItem(
@@ -52,12 +55,12 @@ class _BottomNavState extends State<BottomNav> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(IconlyBold.Wallet),
-            label: 'Wallet',
+            icon: Icon(IconlyBold.VirtualCardPage),
+            label: 'Card',
           ),
           BottomNavigationBarItem(
-            icon: Icon(IconlyBold.Chart),
-            label: 'Stats',
+            icon: Icon(Icons.shop),
+            label: 'Shop',
           ),
           BottomNavigationBarItem(
             icon: Icon(IconlyBold.Profile),

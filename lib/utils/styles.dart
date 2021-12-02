@@ -7,7 +7,8 @@ class Styles {
   static Color yellowColor = const Color(0xFFDFE94B);
   static Color accentColor = const Color(0xFF024751);
   static Color greyColor = const Color(0xFFDFE1E3);
-  static Color buttonColor = const Color(0xFF4C66EE);
+  // static Color buttonColor = const Color(0xFF4C66EE);
+  static Color buttonColor = Colors.red;
   static Color blueColor = const Color(0xFF4BACF7);
   static TextStyle textStyle =
       TextStyle(fontSize: getProportionateScreenWidth(15));

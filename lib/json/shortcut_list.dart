@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_banking_app/pages/send_money.dart';
+import 'package:flutter_banking_app/pages/Bottom_nav_pages/send_money.dart';
 import 'package:flutter_banking_app/utils/iconly/iconly_bold.dart';
 
 List shortcutList = [
   {
     'color': const Color(0xFF026EF4),
     'icon': IconlyBold.Download,
+    'title' : 'Top Up'
   },
   {
     'color': const Color(0xFFFB6A4B),
     'icon': IconlyBold.Upload,
     'route': const SendMoney(),
+    'title' : 'Send'
   },
   {
     'color': const Color(0xFF2BB33A),
-    'icon': IconlyBold.Wallet,
+    'icon': IconlyBold.VirtualCardPage,
+    'title' : 'Bills'
   },
   {
     'color': const Color(0xFFAF52C1),
     'icon': IconlyBold.Category,
+    'title' : 'Airtime'
   },
 ];
 

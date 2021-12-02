@@ -13,12 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Banking App',
+      title: 'Shopay App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'DMSans',
-        primaryColor: Styles.primaryColor,
-        backgroundColor: Styles.primaryColor,
+        // primaryColor: Styles.primaryColor,
+        // backgroundColor: Styles.primaryColor,
       ),
       home: const BottomNav(),
     );

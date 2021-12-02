@@ -27,20 +27,23 @@ List shortcutList = [
 ];
 
 List profilesShortcutList = [
-  {
-    'color': const Color(0xFFe2a935),
-    'icon': IconlyBold.Chart,
-  },
+  // {
+  //   'color': const Color(0xFFe2a935),
+  //   'icon': IconlyBold.Chart,
+  // },
   {
     'color': const Color(0xFF2290b8),
     'icon': IconlyBold.Notification,
+    'title' : 'Notification'
   },
   {
     'color': const Color(0xFF6bcde8),
     'icon': IconlyBold.Setting,
+    'title' : 'Setting'
   },
   {
     'color': const Color(0xFF6b41dc),
     'icon': Icons.logout,
+    'title' : 'Logout'
   },
 ];

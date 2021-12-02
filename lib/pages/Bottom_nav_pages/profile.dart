@@ -13,8 +13,8 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Styles.primaryColor,
-      appBar: myAppBar(title: '', implyLeading: true, context: context),
+      // backgroundColor: Styles.primaryColor,
+      appBar: myAppBar(title: 'Profile ', implyLeading: true, context: context),
       body: ListView(
         padding: const EdgeInsets.all(15),
         children: [
@@ -24,12 +24,12 @@ class Profile extends StatelessWidget {
               Container(
                 height: 280,
                 alignment: Alignment.bottomCenter,
-                color: Styles.primaryColor,
+                // color: Styles.primaryColor,
                 child: Container(
                   height: 230,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Styles.primaryWithOpacityColor,
+                    // color: Styles.primaryWithOpacityColor,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -37,25 +37,30 @@ class Profile extends StatelessWidget {
                     children: [
                       const Gap(60),
                       const Center(
-                          child: Text('Tino Well',
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 25))),
+                          child: Text('Destiny Ed',
+                              style: TextStyle(fontSize: 25))),
                       const Gap(10),
-                      Text('FCW-587462',
-                          style:
-                              TextStyle(color: Colors.white.withOpacity(0.7))),
+                      const Text(
+                        'Male',
+                      ),
                       const Gap(25),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: profilesShortcutList.map<Widget>((e) {
-                          return Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 15),
-                            padding: const EdgeInsets.all(13),
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                            child: Icon(e['icon'], color: e['color']),
+                          return Column(
+                            children: [
+                              Container(
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 15),
+                                padding: const EdgeInsets.all(13),
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                ),
+                                child: Icon(e['icon'], color: e['color']),
+                              ),
+                              Text(e['title'])
+                            ],
                           );
                         }).toList(),
                       ),
@@ -72,11 +77,11 @@ class Profile extends StatelessWidget {
                   width: 100,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Color(0xFFE486DD),
+                    color: Colors.red,
                   ),
                   child: Transform.scale(
                     scale: 0.55,
-                    child: Image.asset(Assets.dash),
+                    child: Image.asset(Assets.memoji1),
                   ),
                 ),
               )
@@ -99,11 +104,11 @@ class Profile extends StatelessWidget {
               icon: IconlyBold.Document,
               color: const Color(0xFF064c6d),
               title: 'Support'),
-          customListTile(
-              icon: Icons.dark_mode,
-              color: const Color(0xFF0536e8),
-              title: 'Dark Mode',
-              isDarkMode: true),
+          // customListTile(
+          //     icon: Icons.dark_mode,
+          //     color: const Color(0xFF0536e8),
+          //     title: 'Dark Mode',
+          //     isDarkMode: true),
         ],
       ),
     );
@@ -129,13 +134,12 @@ class Profile extends StatelessWidget {
       ),
       minLeadingWidth: 50,
       horizontalTitleGap: 13,
-      title: Text(title,
-          style: const TextStyle(fontSize: 17, color: Colors.white)),
+      title: Text(title, style: const TextStyle(fontSize: 17)),
       trailing: isDarkMode == true
           ? CupertinoSwitch(
-              thumbColor: Styles.blueColor,
-              activeColor: Colors.white,
-              trackColor: Colors.white,
+              thumbColor: Colors.red,
+              activeColor: Styles.primaryColor,
+              trackColor: Styles.primaryColor,
               value: true,
               onChanged: (v) {},
             )

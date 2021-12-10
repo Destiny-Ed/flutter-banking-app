@@ -55,7 +55,7 @@ class Profile extends StatelessWidget {
                                 padding: const EdgeInsets.all(13),
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: Colors.white,
+                                  color:Colors.white, 
                                 ),
                                 child: Icon(e['icon'], color: e['color']),
                               ),

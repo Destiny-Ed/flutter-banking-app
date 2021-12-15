@@ -31,6 +31,9 @@ dependencies:
   gap:
   fl_chart:
   flutter_lints: ^1.0.4
+  shared_preferences: ^2.0.10
+  http: ^0.13.4
+  provider: ^6.0.1
 
 dev_dependencies:
   flutter_test:

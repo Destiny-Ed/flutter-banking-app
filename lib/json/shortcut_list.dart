@@ -14,16 +14,16 @@ List shortcutList = [
     'route': const SendMoney(),
     'title' : 'Send'
   },
-  {
-    'color': const Color(0xFF2BB33A),
-    'icon': IconlyBold.VirtualCardPage,
-    'title' : 'Bills'
-  },
-  {
-    'color': const Color(0xFFAF52C1),
-    'icon': IconlyBold.Category,
-    'title' : 'Airtime'
-  },
+  // {
+  //   'color': const Color(0xFF2BB33A),
+  //   'icon': IconlyBold.VirtualCardPage,
+  //   'title' : 'Bills'
+  // },
+  // {
+  //   'color': const Color(0xFFAF52C1),
+  //   'icon': IconlyBold.Category,
+  //   'title' : 'Airtime'
+  // },
 ];
 
 List profilesShortcutList = [
@@ -31,11 +31,11 @@ List profilesShortcutList = [
   //   'color': const Color(0xFFe2a935),
   //   'icon': IconlyBold.Chart,
   // },
-  {
-    'color': const Color(0xFF2290b8),
-    'icon': IconlyBold.Notification,
-    'title' : 'Notification'
-  },
+  // {
+  //   'color': const Color(0xFF2290b8),
+  //   'icon': IconlyBold.Notification,
+  //   'title' : 'Notification'
+  // },
   {
     'color': const Color(0xFF6bcde8),
     'icon': IconlyBold.Setting,

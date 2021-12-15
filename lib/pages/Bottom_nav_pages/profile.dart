@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_banking_app/Constants/route.dart';
+import 'package:flutter_banking_app/Provider/storage_provider.dart';
 import 'package:flutter_banking_app/generated/assets.dart';
 import 'package:flutter_banking_app/json/shortcut_list.dart';
+import 'package:flutter_banking_app/pages/Auth_pages/login.dart';
 import 'package:flutter_banking_app/utils/iconly/iconly_bold.dart';
 import 'package:flutter_banking_app/utils/styles.dart';
 import 'package:flutter_banking_app/widgets/my_app_bar.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -19,73 +23,95 @@ class Profile extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         children: [
           const Gap(40),
-          Stack(
-            children: [
-              Container(
-                height: 280,
-                alignment: Alignment.bottomCenter,
-                // color: Styles.primaryColor,
-                child: Container(
-                  height: 230,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    // color: Styles.primaryWithOpacityColor,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Gap(60),
-                      const Center(
-                          child: Text('Destiny Ed',
-                              style: TextStyle(fontSize: 25))),
-                      const Gap(10),
-                      const Text(
-                        'Male',
+          Consumer<Database>(
+            builder: (context, db, child) {
+              db.getName();
+              db.getProfileImage();
+              return Stack(
+                children: [
+                  Container(
+                    height: 280,
+                    alignment: Alignment.bottomCenter,
+                    // color: Styles.primaryColor,
+                    child: Container(
+                      height: 230,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        // color: Styles.primaryWithOpacityColor,
                       ),
-                      const Gap(25),
-                      Row(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: profilesShortcutList.map<Widget>((e) {
-                          return Column(
-                            children: [
-                              Container(
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 15),
-                                padding: const EdgeInsets.all(13),
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color:Colors.white, 
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Gap(60),
+                          Center(
+                              child: Text(db.name,
+                                  style: const TextStyle(fontSize: 25))),
+                          const Gap(10),
+                          // const Text(
+                          //   'Male',
+                          // ),
+                          const Gap(25),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: profilesShortcutList.map<Widget>((e) {
+                              return GestureDetector(
+                                onTap: () {
+                                  switch (e['title']) {
+                                    case 'Logout':
+                                      Database().logOut().then((value) {
+                                        PageNavigator(context: context)
+                                            .nextPageAndUntil(page: Login());
+                                      });
+                                      break;
+                                  }
+                                },
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 15),
+                                      padding: const EdgeInsets.all(13),
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.white,
+                                      ),
+                                      child: Icon(e['icon'], color: e['color']),
+                                    ),
+                                    Text(e['title'])
+                                  ],
                                 ),
-                                child: Icon(e['icon'], color: e['color']),
-                              ),
-                              Text(e['title'])
-                            ],
-                          );
-                        }).toList(),
+                              );
+                            }).toList(),
+                          ),
+                          const Gap(25)
+                        ],
                       ),
-                      const Gap(25)
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 30,
-                right: 30,
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.red,
-                  ),
-                  child: Transform.scale(
-                    scale: 0.55,
-                    child: Image.asset(Assets.memoji1),
-                  ),
-                ),
-              )
-            ],
+                  Positioned(
+                    left: 30,
+                    right: 30,
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.red,
+                      ),
+                      // child: Transform.scale(
+                      //   scale: 0.55,
+                      //   child: Image.asset(Assets.memoji1),
+                      // ),
+                      child: Transform.scale(
+                        scale: 0.55,
+                        child: Image.network(db.userProfileImage),
+                      ),
+                    ),
+                  )
+                ],
+              );
+            }
           ),
           const Gap(35),
           customListTile(

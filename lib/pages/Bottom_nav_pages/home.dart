@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_banking_app/Provider/storage_provider.dart';
 import 'package:flutter_banking_app/generated/assets.dart';
 import 'package:flutter_banking_app/json/shortcut_list.dart';
 import 'package:flutter_banking_app/json/transactions.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_banking_app/utils/layouts.dart';
 import 'package:flutter_banking_app/utils/size_config.dart';
 import 'package:flutter_banking_app/utils/styles.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -29,10 +31,15 @@ class Home extends StatelessWidget {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text('Hi Destiny Ed', style: TextStyle(fontSize: 16)),
-                  Gap(3),
-                  Text('Welcome back',
+                children: [
+                  Consumer<Database>(
+                    builder: (context, db, child) {
+                      db.getName();
+                      return Text(db.name.toString(), style: const TextStyle(fontSize: 16));
+                    }
+                  ),
+                  const Gap(3),
+                  const Text('Welcome back',
                       style: TextStyle(
                           // color: Colors.white,
                           fontSize: 18,

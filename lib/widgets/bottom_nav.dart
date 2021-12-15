@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_banking_app/pages/Bottom_nav_pages/home.dart';
 import 'package:flutter_banking_app/pages/Bottom_nav_pages/profile.dart';
 import 'package:flutter_banking_app/pages/Bottom_nav_pages/shop.dart';
-import 'package:flutter_banking_app/pages/Bottom_nav_pages/stats.dart';
 import 'package:flutter_banking_app/pages/Bottom_nav_pages/virtual_card.dart';
 import 'package:flutter_banking_app/utils/iconly/iconly_bold.dart';
 import 'package:flutter_banking_app/utils/styles.dart';

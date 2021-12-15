@@ -57,7 +57,7 @@ class _RegisterState extends State<Register> {
                                 height: 10,
                               ),
                               Text(
-                                "Welcome to Convre, Africa's best. Your communities are waiting for you",
+                                "Welcome to Shopay",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(color: _colors.grey),
                               ),

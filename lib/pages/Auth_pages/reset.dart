@@ -56,7 +56,7 @@ class _ResetState extends State<Reset> {
                                 height: 5,
                               ),
                               Text(
-                                "Enter your username or email and we'll send you a link to get back into your account.",
+                                "Enter your email and we'll send you a link to get back into your account.",
                                 textAlign: TextAlign.center,
                               ),
                             ],
@@ -71,11 +71,11 @@ class _ResetState extends State<Reset> {
                           controller: _emailOrUsername,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Email / username should be provided';
+                              return 'Email should be provided';
                             }
                           },
                           decoration: InputDecoration(
-                              labelText: 'Email/Username',
+                              labelText: 'Email',
                               border: OutlineInputBorder()),
                         ),
 

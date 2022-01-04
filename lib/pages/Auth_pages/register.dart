@@ -25,6 +25,7 @@ class _RegisterState extends State<Register> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _username = TextEditingController();
   final TextEditingController _password = TextEditingController();
+  final TextEditingController _phone = TextEditingController();
 
   ///Form Key
   final GlobalKey<FormState> _formKey = GlobalKey();
@@ -66,7 +67,6 @@ class _RegisterState extends State<Register> {
                                 height: 35,
                               ),
                               //Social buttons
-                            
                             ],
                           ),
                         ),
@@ -82,7 +82,7 @@ class _RegisterState extends State<Register> {
                               return "Provide a valid email address";
                             }
                           },
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               labelText: 'Email', border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -97,8 +97,24 @@ class _RegisterState extends State<Register> {
                               return 'Fill in your username';
                             }
                           },
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               labelText: 'Username',
+                              border: OutlineInputBorder()),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+
+                        //Username
+                        TextFormField(
+                          controller: _phone,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Fill in your phone number';
+                            }
+                          },
+                          decoration: InputDecoration(
+                              labelText: 'Phone Number',
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -122,7 +138,7 @@ class _RegisterState extends State<Register> {
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 0.0),
                           controlAffinity: ListTileControlAffinity.leading,
-                          title: Text(
+                          title: const Text(
                             "I agree to the Terms of Use and Privacy Policy",
                             style: TextStyle(fontSize: 14),
                           ),
@@ -159,6 +175,7 @@ class _RegisterState extends State<Register> {
                                           email: _email.text.trim(),
                                           password: _password.text.trim(),
                                           username: _username.text.trim(),
+                                          phone: _phone.text.trim(),
                                           context: context,
                                         );
                                       }
@@ -170,7 +187,8 @@ class _RegisterState extends State<Register> {
                                       child: SizedBox(
                                           height: 20,
                                           width: 20,
-                                          child: CircularProgressIndicator(color: _colors.white)))
+                                          child: CircularProgressIndicator(
+                                              color: _colors.white)))
                                   : Text("Register",
                                       style: TextStyle(
                                           color: _colors.white,

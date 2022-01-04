@@ -11,12 +11,14 @@ class Database extends ChangeNotifier {
   String? _setEmail = '';
   String? _setName = '';
   String? _setId = '';
+  String? _setPhone = '';
   String? _userProfileImage = '';
 
   ///Getters
   String get token => _setToken!;
   String get email => _setEmail!;
   String get name => _setName!;
+  String get phone => _setPhone!;
   String get id => _setId!;
   String get userProfileImage => _userProfileImage!;
 
@@ -45,6 +47,13 @@ class Database extends ChangeNotifier {
     SharedPreferences _instancePref = await _pref;
 
     _instancePref.setString("name", name!);
+  }
+
+  ///Save phone number
+   void savePhoneNumber({String? phone}) async {
+    SharedPreferences _instancePref = await _pref;
+
+    _instancePref.setString("phone", phone!);
   }
 
   ///Save User email
@@ -120,6 +129,23 @@ class Database extends ChangeNotifier {
       return _name!;
     } else {
       _setName = '';
+      notifyListeners();
+      return "";
+    }
+  }
+
+  ///Save Phone
+  Future<String> getPhone() async {
+    SharedPreferences _instancePref = await _pref;
+
+    if (_instancePref.containsKey("phone")) {
+      String? _phone = _instancePref.getString("phone");
+
+      _setPhone = _phone;
+      notifyListeners();
+      return _phone!;
+    } else {
+      _setPhone = '';
       notifyListeners();
       return "";
     }

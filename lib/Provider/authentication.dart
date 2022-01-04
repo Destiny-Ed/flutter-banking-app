@@ -22,6 +22,7 @@ class AuthenticationProvider extends ChangeNotifier {
     required String email,
     required String password,
     required String username,
+    required String phone,
     BuildContext? context,
   }) async {
     _isLoading = true;
@@ -34,6 +35,7 @@ class AuthenticationProvider extends ChangeNotifier {
     Map<String, dynamic> body = {
       'email': email,
       'name': username,
+      'phone': phone,
       'password': password,
       'password_confirmation': password
     };
@@ -65,6 +67,8 @@ class AuthenticationProvider extends ChangeNotifier {
 
         // ///Save user name
         Database().saveUsername(name: _user['name']);
+        Database().savePhoneNumber(phone: _user['phone']);
+
 
         _isLoading = false;
         _resMessage = 'Account created!';
@@ -134,6 +138,7 @@ class AuthenticationProvider extends ChangeNotifier {
 
         // ///Save user name
         Database().saveUsername(name: _user['name']);
+        Database().savePhoneNumber(phone: _user['phone']);
 
         _isLoading = false;
         _resMessage = "Login was successful!";

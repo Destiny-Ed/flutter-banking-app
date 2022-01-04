@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_banking_app/pages/Bottom_nav_pages/send_money.dart';
+import 'package:flutter_banking_app/pages/Payment/enter_amount_page.dart';
 import 'package:flutter_banking_app/utils/iconly/iconly_bold.dart';
 
 List shortcutList = [
   {
     'color': const Color(0xFF026EF4),
     'icon': IconlyBold.Download,
-    'title' : 'Top Up'
+    'title' : 'Top Up',
+    'route' : const WalletPage(),
   },
   {
     'color': const Color(0xFFFB6A4B),

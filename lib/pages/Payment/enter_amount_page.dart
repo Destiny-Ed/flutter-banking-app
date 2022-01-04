@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_banking_app/Constants/colors.dart';
+import 'package:flutter_banking_app/Provider/storage_provider.dart';
 import 'package:flutter_banking_app/pages/Payment/flutterwave_payment.dart';
 import 'package:flutter_banking_app/widgets/snack_bar.dart';
+import 'package:provider/provider.dart';
 
 class WalletPage extends StatefulWidget {
   const WalletPage({Key? key}) : super(key: key);
@@ -153,38 +155,43 @@ class _WalletPageState extends State<WalletPage> {
 
                     ///Make Withdrawal
                     if (amount != '')
-                      GestureDetector(
-                        onTap: () {
-                          ///
-                          if (amount.contains('<')) {
-                            showSuccessSnackBar(
-                                context, "Invalid character '<'");
-                          } else {
-                            ///Make payment by calling flutter wave
-                            FlutterWavePayment(
-                              amount: amount,
-                              name: 'gfgh',
-                              email: 'destiny@gmail.com',
-                              phone: '123456765',
-                              ctx: context,
-                            ).makePayment();
-                          }
-                        },
-                        child: Container(
-                          alignment: Alignment.center,
-                          margin: const EdgeInsets.only(top: 20),
-                          padding: const EdgeInsets.all(15),
-                          width: MediaQuery.of(context).size.width - 160,
-                          decoration: BoxDecoration(
-                              color: MyColors().primaryColor,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Text('Proceed',
-                              style: TextStyle(
-                                  color: MyColors().white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16)),
-                        ),
-                      ),
+                      Consumer<Database>(builder: (context, db, child) {
+                        db.getEmail();
+                        db.getPhone();
+                        db.getName();
+                        return GestureDetector(
+                          onTap: () {
+                            ///
+                            if (amount.contains('<')) {
+                              showSuccessSnackBar(
+                                  context, "Invalid character '<'");
+                            } else {
+                              ///Make payment by calling flutter wave
+                              FlutterWavePayment(
+                                amount: amount,
+                                name: db.name,
+                                email: db.email,
+                                phone: db.phone,
+                                ctx: context,
+                              ).makePayment();
+                            }
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            margin: const EdgeInsets.only(top: 20),
+                            padding: const EdgeInsets.all(15),
+                            width: MediaQuery.of(context).size.width - 160,
+                            decoration: BoxDecoration(
+                                color: MyColors().primaryColor,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Text('Proceed',
+                                style: TextStyle(
+                                    color: MyColors().white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16)),
+                          ),
+                        );
+                      }),
                   ],
                 )),
           )
